@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import configureStore from './store/configureStore'
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import getList from './action/getList'
+import { Provider } from 'react-redux'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const store = configureStore() 
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+store.subscribe(()=>{
+    console.log(store.getState())
+})
+
+console.log(store.getState())  
+    
+store.dispatch(getList())
+
+const jsx= (
+    <Provider store={store}>
+        <App/>
+    </Provider>
+) 
+
+ReactDOM.render(jsx,document.getElementById('root'))
