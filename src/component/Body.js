@@ -40,8 +40,8 @@ class SinIn extends React.Component {
     }
     render(){ 
         return(
-        <div className="container p-5">
-            <div class="row">
+        <div className="container">
+            <div class="row p-5">
             <div className="col-4">
 
                <img src={signinimage} alt="SignIn" class="rounded" width="500" height="600" />
